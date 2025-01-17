@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import plus from "@/assets/icon/plus.png";
@@ -8,7 +8,7 @@ import fx from "@/assets/icon/fx.png";
 
 const centerDiv = "flex items-center justify-center";
 
-export default function RemoveBg() {
+function RemoveBgContent() {
   const searchParams = useSearchParams();
   const avatarUrl = searchParams.get("avatarUrl");
 
@@ -144,5 +144,13 @@ export default function RemoveBg() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function RemoveBg() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RemoveBgContent />
+    </Suspense>
   );
 }
