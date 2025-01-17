@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("./fonts/PoppinsBold.ttf");
+  font-weight: bold;
+}
+
+body {
+  color: #9c9993;
+  /* color: var(--foreground); */
+  background: var(--background);
+  background-color: white;
+  font-family: "Poppins", Helvetica, sans-serif;
+  transition: background-color 0.8s ease; /* Added transition for background color */
+}
+
+.uploadBoxShadow {
+  box-shadow:
+    20px 20px 30px #eeeeee,
+    -20px -20px 30px #eeeeee;
+}
+
+.navShadow {
+  box-shadow: 0 1px 10px rgb(196, 194, 194);
+}
+
+.removeBgBorder {
+  border: 1px solid black;
+}
+
+.downloadBtn {
+  color: white;
+}
+
+body.dark {
+  background-color: #181a1b; /* Dark mode background */
+  color: #bcb7ae; /* Dark mode text color */
+}
+
+.dark .downloadBtn {
+  color: black;
+}
+
+.dark .removeBgBorder {
+  border: 1px solid white;
+}
+
+.dark .uploadBoxShadow {
+  box-shadow:
+    20px 20px 30px rgba(255, 255, 255, 0.1),
+    -20px -20px 30px rgba(255, 255, 255, 0.1);
+}
+
+.dark .navShadow {
+  transition: background-color 0.5s ease;
+  background-color: #181a1b;
+  box-shadow: 0 1px 10px rgba(255, 255, 255, 0.2);
+}
+
+.shadow {
+  box-shadow:
+    20px 20px 30px #eeeeee,
+    -20px -20px 30px #eeeeee;
+}
+
+.dark .shadow {
+  box-shadow:
+    20px 20px 30px rgba(255, 255, 255, 0.1),
+    -20px -20px 30px rgba(255, 255, 255, 0.1);
+}
