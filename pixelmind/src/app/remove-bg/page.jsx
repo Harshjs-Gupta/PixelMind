@@ -34,6 +34,12 @@ function RemoveBgContent() {
           body: JSON.stringify({ imageUrl: avatarUrl }),
         });
 
+        if (response.status === 402) {
+          throw new Error(
+            "Payment required to process the image. Credits exhausted.",
+          );
+        }
+
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.error || "Failed to remove background.");
