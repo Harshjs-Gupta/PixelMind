@@ -100,8 +100,8 @@ export default function Home() {
               animate={{ transform: "translateX(0)", opacity: 1 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <div className="hidden flex-col gap-10 sm:flex">
-                <div className="uploadBoxShadow flex h-80 w-96 flex-col items-center justify-center gap-5 rounded-3xl">
+              <div className="flex-col gap-10 sm:flex">
+                <div className="uploadBoxShadow flex h-72 w-80 flex-col items-center justify-center gap-5 rounded-3xl sm:h-80 sm:w-96">
                   <div>
                     {/* File upload input */}
                     <input
@@ -128,7 +128,7 @@ export default function Home() {
                       setAvatarUrl(e.target.value);
                       setUploadedImage(null); // Clear the uploaded file when URL is entered
                     }}
-                    className="h-14 w-80 rounded-full border border-gray-300 bg-transparent p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0F70E6]"
+                    className="h-12 w-72 rounded-full border border-gray-300 bg-transparent p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0F70E6] sm:h-14 sm:w-80"
                   />
                   {/* Submit button for the URL */}
                   <button
