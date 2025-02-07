@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const backgroundOptions = [
   "https://source.unsplash.com/random/600x400",
@@ -9,7 +9,7 @@ const backgroundOptions = [
   "https://www.w3schools.com/css/img_mountains.jpg",
 ];
 
-export default function AddingBg() {
+const AddingBg = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const processedImage = searchParams.get("processedImage");
@@ -117,4 +117,14 @@ export default function AddingBg() {
       </button>
     </div>
   );
-}
+};
+
+const AddBg = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AddingBg />
+    </Suspense>
+  );
+};
+
+export default AddBg;
