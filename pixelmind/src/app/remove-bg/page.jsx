@@ -1,6 +1,7 @@
 "use client";
+
 import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import plus from "@/assets/icon/plus.png";
 import brush from "@/assets/icon/brush.png";
@@ -9,6 +10,7 @@ import fx from "@/assets/icon/fx.png";
 const centerDiv = "flex items-center justify-center";
 
 function RemoveBgContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const avatarUrl = searchParams.get("avatarUrl");
 
@@ -70,6 +72,13 @@ function RemoveBgContent() {
     link.click();
   };
 
+  const handleGoToAddingBg = () => {
+    if (!processedImage) return;
+    router.push(
+      `/addingBg?processedImage=${encodeURIComponent(processedImage)}`,
+    );
+  };
+
   return (
     <div className="relative top-20 flex flex-col items-center gap-5 px-5 py-2">
       <h1 className="text-center text-xl font-semibold">Remove Background</h1>
@@ -105,38 +114,23 @@ function RemoveBgContent() {
       </div>
 
       <div className="flex flex-col items-start gap-5">
-        <div className={`flex items-center gap-2 ${centerDiv}`}>
+        <div
+          className={`flex items-center gap-2 ${centerDiv} cursor-pointer`}
+          onClick={handleGoToAddingBg}
+        >
           <div
-            className={`h-12 w-12 cursor-pointer rounded-full border-2 border-gray-200 ${centerDiv}`}
+            className={`h-12 w-12 rounded-full border-2 border-gray-200 ${centerDiv}`}
           >
             <Image src={plus} alt="plusIcon" className="h-6 w-6" />
           </div>
           <div className="flex items-center gap-2">
-            <span className="cursor-pointer text-xl">Background</span>
+            <span className="text-xl">Background</span>
             <span
               className={`h-5 w-10 rounded-full bg-[#FFC83E] text-[10px] font-semibold text-[#454545] ${centerDiv}`}
             >
               New
             </span>
           </div>
-        </div>
-
-        <div className={`flex items-center gap-2 ${centerDiv}`}>
-          <div
-            className={`h-12 w-12 cursor-pointer rounded-full border-2 border-gray-200 ${centerDiv}`}
-          >
-            <Image src={brush} alt="brushIcon" className="h-6 w-6" />
-          </div>
-          <span className="cursor-pointer text-xl">Erase/Restore</span>
-        </div>
-
-        <div className={`flex items-center gap-2 ${centerDiv}`}>
-          <div
-            className={`h-12 w-12 cursor-pointer rounded-full border-2 border-gray-200 ${centerDiv}`}
-          >
-            <Image src={fx} alt="effectIcon" className="h-10 w-10" />
-          </div>
-          <span className="cursor-pointer text-xl">Effect</span>
         </div>
 
         <button
